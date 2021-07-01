@@ -1,0 +1,29 @@
+*{
+	font-family: sans-serif;
+	text:  white;
+	
+}
+body{
+	background-color: limegreen;
+}
+img{
+	position: absolute;
+	width: 200px;
+	top: 100px;
+	animation: drive 4s linear infinite both, stant 2s 1s ease;
+}
+
+@keyframes drive{
+	from{ 
+		transform: translate(-200px); 
+	}
+	to{ transform: translate(100vw); }
+}
+
+@keyframes stant {
+	0%{ top: 100px; }
+	25%{ top:200px; }
+	50%{ top: 0px; }
+	75%{ top: 200px; }
+	100%{ top: 100px; }
+}
