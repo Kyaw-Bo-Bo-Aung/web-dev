@@ -41,7 +41,13 @@
                 <li>
                     <a href="{{ route('admin.admin-user.index')}}" class="{{Route::is('admin.admin-user.*')?'mm-active':''}}">
                         <i class="metismenu-icon pe-7s-rocket"></i>
-                        Admin User Management
+                        Admin Users
+                    </a>
+                </li>
+                 <li>
+                    <a href="{{ route('admin.user.index')}}" class="{{Route::is('admin.user.*')?'mm-active':''}}">
+                        <i class="metismenu-icon pe-7s-rocket"></i>
+                        Users
                     </a>
                 </li>
             </ul>

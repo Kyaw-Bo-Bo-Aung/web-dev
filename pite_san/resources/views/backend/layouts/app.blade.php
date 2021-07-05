@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
     <link href="{{asset('backend/main.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/css/style.css') }}">
@@ -64,6 +65,12 @@
 
     <script>
         $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            
             $('.back-btn').on('click',function() {
                 alert('ok');
                 window.histroy.go(-1);
@@ -86,6 +93,21 @@
                 Toast.fire({
                   icon: 'success',
                   title: "{{session('create')}}"
+                })
+            }
+            @endif
+            @if (session('update')) {
+                Toast.fire({
+                  icon: 'success',
+                  title: "{{session('update')}}"
+                })
+            }
+            @endif
+
+             @if (session('user_create')) {
+                Toast.fire({
+                  icon: 'success',
+                  title: "{{session('user_create')}}"
                 })
             }
             @endif

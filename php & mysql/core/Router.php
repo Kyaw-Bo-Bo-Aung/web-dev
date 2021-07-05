@@ -22,12 +22,11 @@ class Router {
 
 	public function direct ($uri, $method) 
 	{
-		
 		if (!array_key_exists($uri, $this->routes[$method])) {
 			echo "404 not found";
 		}
 
-		$explosion = explode('@', $this->routes[$method][$uri]);
+		$explosion = $this->routes[$method][$uri];
 		$this->callAction($explosion[0], $explosion[1]);
 		
 		

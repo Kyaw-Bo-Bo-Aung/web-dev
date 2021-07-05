@@ -1,6 +1,6 @@
 <?php
 
-
+use controllers\PageController;
 // $router->register(
 // 	[
 // 		"" => "controllers/IndexController.php",
@@ -19,13 +19,20 @@
 // $router->post("names", "controllers/add-name.php");
 // $router->post("destroy", "controllers/destroy-name.php");
 
-$router->get("", "PageController@index");
-$router->get("about", "PageController@about");
-$router->get("contact", "PageController@contact");
-$router->get("products", "PageController@product");
 
-$router->post("names", "PageController@create");
-$router->post("destroy", "PageController@destroy");
+// $router->get("", "PageController@index");
+// $router->get("about", "PageController@about");
+// $router->get("contact", "PageController@contact");
+// $router->get("products", "PageController@product");
+
+// $router->post("names", "PageController@create");
+// $router->post("destroy", "PageController@destroy");
 
 
-// dd($router->routes);
+$router->get("", [PageController::class, 'index']);
+$router->get("about", [PageController::class, 'about']);
+$router->get("contact", [PageController::class, 'contact']);
+$router->get("products", [PageController::class, 'products']);
+
+$router->post("names", [PageController::class, 'create']);
+$router->post("destroy", [PageController::class, 'destroy']);

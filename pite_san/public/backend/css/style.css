@@ -2,3 +2,10 @@
 	padding: 10px 30px !important;
 	margin-bottom: 0px !important;
 }
+.action_btn a{
+	font-size: 18px;
+}
+.action_btn a:hover{
+	background: lightgrey;
+	border-radius: 10px;
+}

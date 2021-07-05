@@ -1,5 +1,7 @@
 <?php
 
+namespace controllers;
+use core\App;
 
 class PageController
 {
@@ -33,15 +35,15 @@ class PageController
 	public function create()
 	{
 		$users = App::get('database')->insert([
-			'name' => $_POST['name']
+			'name' => request('name')
 		],'user');
 
-		header("Location: /");
+		redirect("/");
 	}
 
 	public function destroy()
 	{
-		$del_user = App::get('database')->destroy($_POST['id'],'user');
-		header("Location: /");
+		$del_user = App::get('database')->destroy(request('id'),'user');
+		redirect("/");
 	}
 }

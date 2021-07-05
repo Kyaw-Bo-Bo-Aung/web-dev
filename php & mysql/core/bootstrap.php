@@ -1,5 +1,8 @@
 <?php
+use core\App;
+
 require "functions.php";
+
 // require "Router.php";
 // require "Request.php";
 // require "database/Connections.php";
