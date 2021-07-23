@@ -62,10 +62,11 @@
 
 			setInterval(function() {
 				table.ajax.reload()
-			}, 5000);
+			}, 30000);
 
 			$(document).on('click', '.delete_btn', function(e){
 				e.preventDefault();
+				// alert('please');
 				let id = $(this).data('id');
 				Swal.fire({
 					title: 'Are you sure?',

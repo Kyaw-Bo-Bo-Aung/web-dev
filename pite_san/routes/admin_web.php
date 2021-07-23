@@ -10,6 +10,9 @@ Route::prefix('admin')->name('admin.')->namespace('Backend')->middleware('auth:a
 		// server side data(ssd) datatable Route
 		Route::get('admin-user/datatable/ssd', 'AdminUserController@ssd');
 		Route::get('user/datatable/ssd', 'UserController@ssd');
+
+		Route::get('wallet', 'WalletController@index')->name('wallet.index');
+		Route::get('wallet/datatable/ssd', 'WalletController@ssd');
 });
 
 

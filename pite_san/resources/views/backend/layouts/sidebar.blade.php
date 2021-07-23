@@ -40,14 +40,20 @@
                 </li>
                 <li>
                     <a href="{{ route('admin.admin-user.index')}}" class="{{Route::is('admin.admin-user.*')?'mm-active':''}}">
-                        <i class="metismenu-icon pe-7s-rocket"></i>
+                        <i class="metismenu-icon pe-7s-users"></i>
                         Admin Users
                     </a>
                 </li>
                  <li>
                     <a href="{{ route('admin.user.index')}}" class="{{Route::is('admin.user.*')?'mm-active':''}}">
-                        <i class="metismenu-icon pe-7s-rocket"></i>
+                        <i class="metismenu-icon pe-7s-users"></i>
                         Users
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.wallet.index')}}" class="{{Route::is('admin.wallet.*')?'mm-active':''}}">
+                        <i class="metismenu-icon pe-7s-wallet"></i>
+                        Wallets
                     </a>
                 </li>
             </ul>

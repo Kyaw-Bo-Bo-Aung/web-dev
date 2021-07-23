@@ -32,7 +32,6 @@
 						<th>Action</th>
 					</tr>
 				</thead>
-				
 			</table>
 		</div>
 	</div>
@@ -60,7 +59,7 @@
 
 			setInterval(function() {
 				table.ajax.reload()
-			}, 5000);
+			}, 30000);
 
 			$(document).on('click', '.delete_btn', function(e){
 				e.preventDefault();

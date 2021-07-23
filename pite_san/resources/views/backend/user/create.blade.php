@@ -21,6 +21,14 @@
 <div class="content pt-3">
 	<div class="card m-auto" style="max-width: 600px;">
 		<div class="card-body">
+			@error('Fail')
+			    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+			    	{{ $message }}
+			    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+			@enderror
 			<form method="POST" action="{{ route('admin.user.store')}}">
 				@csrf
 				<div class="form-group">
