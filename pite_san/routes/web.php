@@ -25,6 +25,7 @@ Route::middleware('auth')->namespace('Frontend')->group(function(){
 	Route::get('/transaction/hash', 'PageController@hashValue');
 
 	Route::get('/qr-code', 'PageController@qrCode');
+	Route::get('/scan-and-pay', 'PageController@scanAndPay');
 });
 
 // Admin User Auth
