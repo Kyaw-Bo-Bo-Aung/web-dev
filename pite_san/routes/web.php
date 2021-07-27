@@ -12,6 +12,7 @@ Route::middleware('auth')->namespace('Frontend')->group(function(){
 	Route::put('/update-password', 'PageController@changePasswordUpdate')->name('change-password.update');
 	Route::get('/wallet', 'PageController@wallet')->name('wallet');
 	Route::get('/real-time-wallet', 'PageController@realTimeWallet');
+
 	Route::get('/transfer', 'PageController@transfer')->name('transfer');
 	Route::get('/transfer/confirm', 'PageController@transferConfirm')->name('transfer-confirm');
 	Route::post('/transfer/complete', 'PageController@transferComplete')->name('transfer.complete');
@@ -25,7 +26,11 @@ Route::middleware('auth')->namespace('Frontend')->group(function(){
 	Route::get('/transaction/hash', 'PageController@hashValue');
 
 	Route::get('/qr-code', 'PageController@qrCode');
+	// scan and pay
 	Route::get('/scan-and-pay', 'PageController@scanAndPay');
+	Route::get('/scan-and-pay/form', 'PageController@scanAndPayForm');
+	Route::get('/scan-and-pay/confirm', 'PageController@scanAndPayConfirm');
+	Route::post('/scan-and-pay/complete', 'PageController@scanAndPayComplete');
 });
 
 // Admin User Auth

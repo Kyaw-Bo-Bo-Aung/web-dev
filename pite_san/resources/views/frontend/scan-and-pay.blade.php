@@ -3,6 +3,14 @@
 @section('content') 
         <section class="scan-and-pay my-4">
             <div class="card">
+              @error('Fail')
+              <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+                {{$message}}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+              @enderror
                 <div class="card-body text-center">
                     <img src="{{asset('img/qr-scan.png')}}" class="img-fluid" width="200">
                     <div class="text-center">Scan QR and pay</div>
@@ -60,7 +68,7 @@
             $('#scanModal').hide();
             $(document.body).removeClass('modal-open');
             $('.modal-backdrop').remove();
-            console.log(content);
+            window.location.replace('scan-and-pay/form?to_phone='+content);
         }
         
       });
