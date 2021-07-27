@@ -30,6 +30,7 @@
     @foreach($transactions as $transaction)
     <a href="{{ route('transactions.show', $transaction->trx_id )}}">
         <div class="card my-2">
+        <div class="d-flex justify-content-between">
             <div class="card-body p-2">
                 <h6><b>Trx_id:</b> {{$transaction->trx_id}} </h6>     
                     <div class="text-muted">
@@ -52,6 +53,10 @@
                         Date: {{ $transaction->created_at->format('M d Y (D)') }}
                     </div>
             </div>
+            <div class="align-self-center">
+                <i class="fas fa-chevron-right pr-2"></i>
+            </div>
+        </div>
         </div>
     </a>
     @endforeach

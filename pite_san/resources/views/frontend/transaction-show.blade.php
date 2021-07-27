@@ -34,7 +34,7 @@
                 <div>Type:</div>
                 <div> 
                     @if($transaction->type == 1) <span class="badge badge-success badge-rounded-pill p-2">Income</span>
-                    @elseif($transaction->type == 2) <span class="badge badge-danger rounded-pill p-2">Expense</span>
+                    @elseif($transaction->type == 2) <span class="badge badge-danger badge-rounded-pill p-2">Expense</span>
                     @endif
                 </div>
             </div>
@@ -60,7 +60,7 @@
             <hr>
             <div>
                 <div>Description :</div>
-                <div class="text-justify py-1"> {{ $transaction->description }}</div>
+                <div class="text-justify py-1"> {{ $transaction->description ?? '-' }}</div>
             </div>
         </div>
     </div>

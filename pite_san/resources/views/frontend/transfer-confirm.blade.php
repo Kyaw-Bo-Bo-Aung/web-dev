@@ -5,10 +5,10 @@
     <div class="card">
         <div class="card-body p-3">
             @error('wallet_amount')
-            <p class="text-danger">{{$message}}</p>
+            <p class="text-danger ">{{$message}}</p>
             @enderror
             @error('Fail')
-            <p class="text-danger">{{$message}}</p>
+            <p class="alert alert-danger px-2 py-1 border-0">{{$message}}</p>
             @enderror
             <form action="{{ route('transfer.complete') }}" method="POST" id="passwordCheckForm">
                 @csrf
@@ -30,7 +30,7 @@
                 </div>
                  <div class="form-group">
                     <label class="my-0 font-weight-bold">Description</label>
-                    <p class="text-muted">{{$description}}</p>
+                    <p class="text-muted">{{$description ?? '-'}}</p>
                 </div>
                 <div class="form-group mt-4">
                     <button class="btn btn-theme btn-block send_btn">Send</button>

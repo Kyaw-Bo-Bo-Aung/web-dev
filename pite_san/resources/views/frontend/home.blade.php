@@ -21,12 +21,14 @@
             </div>
         </div>
         <div class="col-6 my-3">
+            <a href="{{url('qr-code')}}">
                 <div class="card">
                     <div class="card-body px-2 py-3">
                         <img src="{{asset('img/qr-code.png')}}" class="img-fluid d-inline-flex mr-1" width="25" height="25">
                         <span>Recieve QR</span>
                     </div>
                 </div>
+            </a>
         </div>
     </div>
 

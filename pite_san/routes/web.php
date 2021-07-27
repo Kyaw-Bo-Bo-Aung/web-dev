@@ -23,6 +23,8 @@ Route::middleware('auth')->namespace('Frontend')->group(function(){
 	Route::get('/transactions/{id}', 'PageController@transactionShow')->name('transactions.show');
 	// transaction ajax
 	Route::get('/transaction/hash', 'PageController@hashValue');
+
+	Route::get('/qr-code', 'PageController@qrCode');
 });
 
 // Admin User Auth

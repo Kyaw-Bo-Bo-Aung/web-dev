@@ -13,8 +13,9 @@
                         <span class="text-uppercase"><small>Account Number</small></span>
                         <span class="lead">{{ $user->wallet ? $user->wallet->account_number : '-' }}</span>
                     </div>
-                    <div id="wallet-user" class="pt-4">
-                        <span class="text-uppercase lead">{{ $user->name }}</span>
+                    <div id="wallet-user" class="pt-3">
+                        <span class="text-uppercase"><small>Account Name</small></span>
+                        <span class="lead">{{ $user->name }}</span>
                     </div>
                 </div>
             </div>

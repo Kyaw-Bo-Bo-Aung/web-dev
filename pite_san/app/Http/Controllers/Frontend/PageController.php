@@ -76,7 +76,7 @@ class PageController extends Controller
         $hash_val = $request->hash_val;
         // hash security
         if ($hash2 !== $hash_val) {
-            return back()->withErrors(['Fail' => "hash. Invalid data"])->withInput();
+            return back()->withErrors(['Fail' => "Invalid data"])->withInput();
         }
         //transfer to yourself
         if ($to_phone == $from_user->phone) {
@@ -243,5 +243,10 @@ class PageController extends Controller
             "status" => "success",
             "data" => $hash
             ]);
+    }
+
+    public function qrCode() {
+        $authUser = Auth::guard('web')->user();
+        return view('frontend.qr-code', compact('authUser'));
     }
 }
