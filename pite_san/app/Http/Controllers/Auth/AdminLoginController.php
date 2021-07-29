@@ -40,6 +40,11 @@ class AdminLoginController extends Controller
         $this->middleware('guest:admin_user')->except('logout');
     }
 
+    public function username()
+    {
+        return 'phone';
+    }
+    
     protected function guard()
     {
         return Auth::guard('admin_user');

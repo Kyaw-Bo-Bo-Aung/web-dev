@@ -15,7 +15,8 @@
 </div>
 
 <div class="pt-3">
-	<a href="{{ route('admin.user.create')}}" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Create User</a>
+	<a href="{{ url('admin/wallet/add') }}" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Add Wallet</a>
+	<a href="{{ url('admin/wallet/reduce') }}" class="btn btn-danger"><i class="fas fa-minus-circle"></i> Reduce Wallet</a>
 </div>
 
 <div class="content pt-3">

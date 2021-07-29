@@ -47,8 +47,9 @@
                                 <h3 class="mb-0 text-center">@yield('title')</h3>
                         </div>
                         <div class="col-2 text-center">
-                           <a href="" class="noti-btn">
+                           <a href="{{url('notifications')}}" class="noti-btn">
                                 <i class="fas fa-bell"></i>
+                                <x-notification-count />
                            </a>
                         </div>    
                     </div>
@@ -66,7 +67,7 @@
 
         <section class="bottom-menu">
             <div class="scan-div d-flex justify-content-center align-items-center">
-                <a href="#" class="scan-wrapper d-flex justify-content-center align-items-center">
+                <a href="{{url('scan-and-pay')}}" class="scan-wrapper d-flex justify-content-center align-items-center">
                     <div class="scan-inner d-flex justify-content-center align-items-center">
                         <div class="scan-content d-flex justify-content-center align-items-center">
                             <i class="fas fa-qrcode m-0"></i>
@@ -167,6 +168,7 @@
             $('.back-btn').on('click', function(e) {
                 e.preventDefault();
                 window.history.go(-1);
+
             })
         })
     </script>

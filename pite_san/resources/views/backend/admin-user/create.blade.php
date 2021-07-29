@@ -18,8 +18,8 @@
 	<a href="{{ route('admin.admin-user.index')}}" class="btn btn-secondary"><i class="pe-7s-back"></i> Back </a>
 </div>
 
-<div class="content pt-3">
-	<div class="card m-auto" style="max-width: 600px;">
+<div class="content py-3">
+	<div class="card">
 		<div class="card-body">
 			<form method="POST" action="{{ route('admin.admin-user.store')}}">
 				@csrf
@@ -75,7 +75,7 @@
 					@enderror --}}
 				</div>
 
-				<div class="d-flex justify-content-end">
+				<div class="">
 					<button type="submit" class="btn btn-primary mx-1">Confirm</button>
 				</div>
 			</form>

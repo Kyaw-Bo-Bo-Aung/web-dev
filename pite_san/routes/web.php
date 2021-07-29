@@ -31,6 +31,9 @@ Route::middleware('auth')->namespace('Frontend')->group(function(){
 	Route::get('/scan-and-pay/form', 'PageController@scanAndPayForm');
 	Route::get('/scan-and-pay/confirm', 'PageController@scanAndPayConfirm');
 	Route::post('/scan-and-pay/complete', 'PageController@scanAndPayComplete');
+	// notification
+	Route::get('notifications', 'NotificationController@index');
+	Route::get('notifications/{id}', 'NotificationController@show')->name('notifications.show');
 });
 
 // Admin User Auth

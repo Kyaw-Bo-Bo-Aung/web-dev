@@ -1,4 +1,4 @@
-/*background: #BAFFB5;
+/*
 theme: #FFFCB3;
 action-btn: #FF756B;
 <a href="https://storyset.com/online">Online illustrations by Storyset</a>
@@ -17,7 +17,7 @@ border-radius: 10px;*/
 	border-radius: 5px;
 }
 body{
-	background: #BAFFB5;
+	background: #ddd;
 	font-size: 15px;
 	font-family: 'Roboto', sans-serif;
 }
@@ -136,7 +136,7 @@ a:hover{
 }
 .scan-wrapper{
 	position: absolute;
-	background: #BAFFB5;
+	background: #ddd;
 	width: 3.6rem;
 	height: 3.6rem;
 	border-radius: 50%;
@@ -177,4 +177,17 @@ a:hover{
 	border-radius: 10px;
 	color: #333;
 }
-
+/*-------------------------------- notifications ---------------------------*/
+.noti-btn{
+	position: relative;
+}
+.notifications .noti_unread{
+	background: #eceff5;
+	border: 1px solid #fff;
+}
+#unread_noti_count{
+	position: absolute;
+	top:  -1.2em;
+	right: -1.2em;
+	border-radius: 50%;
+}

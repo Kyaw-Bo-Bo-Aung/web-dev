@@ -13,6 +13,15 @@ Route::prefix('admin')->name('admin.')->namespace('Backend')->middleware('auth:a
 
 		Route::get('wallet', 'WalletController@index')->name('wallet.index');
 		Route::get('wallet/datatable/ssd', 'WalletController@ssd');
+		// add wallet
+		Route::get('wallet/add', 'WalletController@addWalletForm')->name('wallet.add.create');
+		Route::post('wallet/add', 'WalletController@addWallet')->name('wallet.add.post');
+		// reduce wallet
+		Route::get('wallet/reduce', 'WalletController@reduceWalletForm')->name('wallet.reduce.create');
+		Route::post('wallet/reduce', 'WalletController@reduceWallet')->name('wallet.reduce.post');
+		// check password for add/reduce amount
+		Route::post('add-wallet/password-check/{password?}', 'WalletController@checkPassword');
+
 });
 
 

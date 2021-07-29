@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use App\Transaction;
+use App\Notifications\GeneralNotification;
 use App\Helpers\UUIDGenerator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 use App\Http\Requests\TransferConfirmRequest;
 
 class PageController extends Controller
@@ -37,6 +39,14 @@ class PageController extends Controller
         if (Hash::check($request->old_password, $user->password)) {
             $user->password = Hash::make($request->new_password);
             $user->update();
+
+            $title = 'Password Changed!';
+            $message = 'Your password has been changed successfully.';
+            $sourceId = $user->id;
+            $sourceType = User::class;
+            $web_link = url('profile');
+            Notification::send($user, new GeneralNotification($title, $message, $sourceId, $sourceType, $web_link));
+
             return redirect()->route('profile')->with('update', 'Password Updated Successfully');
         }
         return back()->withErrors(['old_password' => 'old_password is incorrect'])->withInput();
@@ -204,6 +214,20 @@ class PageController extends Controller
             $to_account_transaction->source_id = $from_user->id;
             $to_account_transaction->description = $description;
             $to_account_transaction->save();
+            // for from_account noti
+            $title = 'Money Transfered!';
+            $message = 'Transfered '. number_format($amount,2) .' MMK to <b>'. $to_user->phone . ' ( '.$to_user->name.' ).</b> ';
+            $sourceId = $from_account_transaction->trx_id;
+            $sourceType = Transaction::class;
+            $web_link = url('/transactions/'.$from_account_transaction->trx_id);
+            Notification::send($from_user, new GeneralNotification($title, $message, $sourceId, $sourceType, $web_link));
+            // for to_account noti
+            $title = 'Money Recieved!';
+            $message = 'Recieved '. number_format($amount,2) .' MMK from '. $from_user->phone . ' ( '.$from_user->name.' ). ';
+            $sourceId = $to_account_transaction->trx_id;
+            $sourceType = Transaction::class;
+            $web_link = url('/transactions/'.$to_account_transaction->trx_id);
+            Notification::send($to_user, new GeneralNotification($title, $message, $sourceId, $sourceType, $web_link));
             DB::commit();
 
         return redirect('/transactions/'.$from_account_transaction->trx_id)->with('success', 'Transaction successful!');
@@ -253,14 +277,15 @@ class PageController extends Controller
         return view('frontend.scan-and-pay');
     }
     public function scanAndPayForm(Request $request) {
+        // dd($request->to_phone);
         $from_user = Auth::guard('web')->user();
         $to_user = User::where('phone', $request->to_phone)->first();
-        if (!$to_user) {
+        if (!$to_user || $from_user->phone == $request->to_phone) {
             return back()->withErrors(['Fail'=>'Invalid QR code'])->withInput();
         }
-        if ($to_user->phone == $request->to_phone) {
-            return back()->withErrors(['Fail'=>'Invalid QR code'])->withInput();
-        }
+        // if () {
+        //     return back()->withErrors(['Fail'=>'Invalid QR Code'])->withInput();
+        // }
         return view('frontend.scan-and-pay-form', compact('from_user', 'to_user'));
     }
 
@@ -365,6 +390,22 @@ class PageController extends Controller
             $to_account_transaction->source_id = $from_user->id;
             $to_account_transaction->description = $description;
             $to_account_transaction->save();
+
+             // for from_account noti
+            $title = 'Money Transfered!';
+            $message = 'Transfered '. number_format($amount,2) .' MMK to <b>'. $to_user->phone . ' ( '.$to_user->name.' ).</b> ';
+            $sourceId = $from_account_transaction->trx_id;
+            $sourceType = Transaction::class;
+            $web_link = url('/transactions/'.$from_account_transaction->trx_id);
+            Notification::send($from_user, new GeneralNotification($title, $message, $sourceId, $sourceType, $web_link));
+            // for to_account noti
+            
+            $title = 'Money Recieved!';
+            $message = 'Recieved '. number_format($amount,2) .' MMK from '. $from_user->phone . ' ( '.$from_user->name.' ). ';
+            $sourceId = $to_account_transaction->trx_id;
+            $sourceType = Transaction::class;
+            $web_link = url('/transactions/'.$to_account_transaction->trx_id);
+            Notification::send($to_user, new GeneralNotification($title, $message, $sourceId, $sourceType, $web_link));
             DB::commit();
 
         return redirect('/transactions/'.$from_account_transaction->trx_id)->with('success', 'Transaction successful!');
