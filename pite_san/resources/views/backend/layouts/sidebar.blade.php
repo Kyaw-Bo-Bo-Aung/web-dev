@@ -56,6 +56,12 @@
                         Wallets
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('admin.transactions.index')}}" class="{{Route::is('admin.transactions.*')?'mm-active':''}}">
+                        <i class="metismenu-icon pe-7s-news-paper"></i>
+                        Transactions
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

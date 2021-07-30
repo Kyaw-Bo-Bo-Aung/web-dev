@@ -47,10 +47,10 @@
                     <div class="app-footer">
                         <div class="app-footer__inner">
                             <div class="app-footer-left">
-                                <span>Developed by Kyaw Bo Bo Aung</span>
+                                <span>Developed by <a href="https://kyawboboaung.me/">Kyaw Bo Bo Aung</a></span>
                             </div>
                             <div class="app-footer-right">
-                                <span>2021 Copyright &copy; All rights deserved</span>
+                                <span>Credit @ <a href="https://www.youtube.com/channel/UCZm9ZXFcdrD8NRBY6HslZPw">FullStack DEV</a></span>
                             </div>
                         </div>
                     </div>
