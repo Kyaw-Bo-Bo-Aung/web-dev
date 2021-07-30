@@ -21,6 +21,9 @@
 <div class="content py-3">
 	<div class="card m-auto">
 		<div class="card-body">
+			@error('Fail')
+			<div class="alert alert-danger p-2">{{$message}}</div>
+			@enderror
 			<form action="{{route('admin.wallet.add.post')}}" method="POST" id="addWalletForm">
 				@csrf
 				<div class="form-group">
@@ -49,46 +52,13 @@
 
 @endsection
 @section('scripts')
+	{!! JsValidator::formRequest('App\Http\Requests\WalletRequest') !!}
 <script>
 	$(document).ready(function() {
 	    $('.select_user').select2({
 	    	placeholder: "-- Choose User --",
     		allowClear: true,
 	    	theme: 'bootstrap4',
-	    });
-	    $('.wallet_btn').on('click',function(e) {
-	    	e.preventDefault();
-	    	Swal.fire({
-                title: 'Fill your password',
-                icon: 'info',
-                html:
-                '<input type="password" name="password" class="form-control text-center" id="check_password" autocomplete="off" autofocus />',
-                showCancelButton: true,
-                confirmButtonText: 'Confirm',
-                cancelButtonText: 'Cancel',
-                reverseButtons: true,
-                confirmButtonColor: '#FF756B',
-                cancelButtonColor: '#aaa'
-            }).then(result => {
-                if (result.isConfirmed) {
-                    let password = $('#check_password').val(); 
-                    $.ajax({
-                        url: '/admin/add-wallet/password-check/'+password,
-                        type: 'POST',
-                        success: function(res){
-                            if (res.status == 'success') {
-                                $('#addWalletForm').submit();     
-                            }else{
-                                 Swal.fire({
-                                  icon: 'error',
-                                  title: 'Oops...',
-                                  text: res.message
-                                })
-                            }
-                        }
-                    })
-                }
-            })
 	    });
 	});
 </script>

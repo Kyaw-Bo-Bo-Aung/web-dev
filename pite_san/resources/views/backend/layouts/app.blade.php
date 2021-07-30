@@ -109,6 +109,13 @@
                 })
             }
             @endif
+            @if (session('reduce')) {
+                Toast.fire({
+                  icon: 'success',
+                  title: "{{session('update')}}"
+                })
+            }
+            @endif
 
              @if (session('user_create')) {
                 Toast.fire({

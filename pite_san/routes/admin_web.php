@@ -19,8 +19,9 @@ Route::prefix('admin')->name('admin.')->namespace('Backend')->middleware('auth:a
 		// reduce wallet
 		Route::get('wallet/reduce', 'WalletController@reduceWalletForm')->name('wallet.reduce.create');
 		Route::post('wallet/reduce', 'WalletController@reduceWallet')->name('wallet.reduce.post');
-		// check password for add/reduce amount
-		Route::post('add-wallet/password-check/{password?}', 'WalletController@checkPassword');
+		// transaction
+		Route::get('transactions', 'TransactionController@index')->name('transactions.index');
+		Route::get('transactions/{id}', 'TransactionController@show')->name('transactions.show');
 
 });
 
