@@ -3,6 +3,14 @@
 @section('content') 
 
 <section class="notifications mt-3 mb-4 pb-5">
+    @if($notifications->count() <= 0)
+        <div class="card">
+            <div class="card-body text-center">
+                <i class="fas fa-info-circle"></i>
+                No notification
+            </div>
+        </div>
+    @endif
     <div class="infinite-scroll">
     @foreach($notifications as $notification)
     <a href="{{ route('notifications.show', $notification->id )}}">

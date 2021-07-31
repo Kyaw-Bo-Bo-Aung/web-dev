@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="col-6 my-3">
-           <a href="{{url('scan-and-pay')}}">
+           <a href="{{url('scan-and-pay')}}" class="change-pwd-btn">
                 <div class="card">
                     <div class="card-body px-2 py-3">
                         <img src="{{asset('img/qr-code-scan.png')}}" class="img-fluid d-inline-flex mr-1" width="25" height="25">
@@ -23,7 +23,7 @@
            </a>
         </div>
         <div class="col-6 my-3">
-            <a href="{{url('qr-code')}}">
+            <a href="{{url('qr-code')}}" class="change-pwd-btn">
                 <div class="card">
                     <div class="card-body px-2 py-3">
                         <img src="{{asset('img/qr-code.png')}}" class="img-fluid d-inline-flex mr-1" width="25" height="25">

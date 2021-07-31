@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Wallet;
+use App\Helpers\UUIDGenerator;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -53,8 +55,8 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone' => ['required', 'string', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed']
+            'phone' => ['required', 'string', 'unique:users', 'min: 6'],
+            'password' => ['required', 'string', 'min:8', 'max:255', 'confirmed']
         ]);
     }
 
@@ -66,7 +68,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        return $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'phone' => $data['phone'],
@@ -76,6 +78,15 @@ class RegisterController extends Controller
 
     protected function registered(Request $request, $user)
     {
+        Wallet::firstOrCreate(
+            [
+                'user_id' => $user->id
+            ],
+            [
+                'account_number' => UUIDGenerator::accountNumber(),
+                'amount' => 0
+             ]
+        );
         $user->ip = $request->ip();
         $user->user_agent = $request->server('HTTP_USER_AGENT');
         $user->login_at = date('Y-m-d H:i:s');

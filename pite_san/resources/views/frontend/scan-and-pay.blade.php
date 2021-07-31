@@ -17,7 +17,6 @@
                     <div class="mt-3">
                         <button class="btn btn-theme" data-toggle="modal" data-target="#scanModal">Scan</button>
                     </div>
-                    
                 </div>
             </div>
         </section>

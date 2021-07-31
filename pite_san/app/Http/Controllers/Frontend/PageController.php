@@ -255,8 +255,12 @@ class PageController extends Controller
 
     public function transactionShow($id)
     {
+        // where('trx_id', $id)->
+        //->where('user_id', $authUser->id)
+        // dd($id);
         $authUser = Auth::guard('web')->user();
         $transaction = Transaction::with('user', 'source')->where('user_id', $authUser->id)->where('trx_id', $id)->first();
+
         return view('frontend.transaction-show', compact('transaction'));
     }
 
@@ -398,8 +402,8 @@ class PageController extends Controller
             $sourceType = Transaction::class;
             $web_link = url('/transactions/'.$from_account_transaction->trx_id);
             Notification::send($from_user, new GeneralNotification($title, $message, $sourceId, $sourceType, $web_link));
+
             // for to_account noti
-            
             $title = 'Money Recieved!';
             $message = 'Recieved '. number_format($amount,2) .' MMK from '. $from_user->phone . ' ( '.$from_user->name.' ). ';
             $sourceId = $to_account_transaction->trx_id;

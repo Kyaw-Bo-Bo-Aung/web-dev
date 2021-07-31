@@ -165,8 +165,8 @@ a:hover{
 }
 .logout-btn:hover, .change-pwd-btn:hover{
 	cursor: pointer;
-	background: #eee;
 	border-radius: 10px;
+	color:  #FF756B;
 }
 /*---------------------------- Wallet ----------------------------*/
 .wallet span{

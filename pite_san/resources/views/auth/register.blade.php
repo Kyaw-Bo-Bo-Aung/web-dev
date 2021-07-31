@@ -7,7 +7,7 @@
             <div class="card auth-form">
                 <div class="card-body">
                     <h3 class="text-center">Register</h3>
-                    <p class="text-center text-muted mb-4"><em>Make your business more streamline</em></p>
+                    <p class="text-center text-muted mb-4"><em>Please Register Here!</em></p>
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
