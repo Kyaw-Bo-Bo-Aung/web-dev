@@ -51,9 +51,9 @@
                                 <a href="{{ route('register') }}" class="text-sm-center">
                                 Register Here!</a>
                                 @if (Route::has('password.request'))
-                                    <a href="{{ route('password.request') }}">
+                                    {{-- <a href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
-                                    </a>
+                                    </a> --}}
                                 @endif
                             </div>
                         </div>            
